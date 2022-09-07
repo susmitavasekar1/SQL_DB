@@ -1,0 +1,27 @@
+1.query to display no. of employees join on Dec 02  :
+select first_name, to_char(hire_date, 'MON-YY') 
+from employees where to_char(hire_date, 'MON-YY') like 'DEC-02';
+
+2. query to display employee information with max salary : 
+select * from employees where salary
+ in (select max(salary) from employees);
+
+3. query to display second highest salary : 
+select max(salary) from employees 
+where salary < (select max(salary) from employees);
+
+4.query to display second highest salary department wise :
+select department_id, max(salary)
+from employees e
+where e.salary < (select max(salary) from employees b
+where e.department_id = b.department_id)
+group by department_id;
+
+1. query to display employees name with city they working into :
+select a.first_name as name,b.city as city from employees a,
+emp_details_view b where a.employee_id=b.employee_id;
+
+2.query to display employees who joined in the same month as Charles:
+ select first_name,to_char(hire date, 'MON') from employees
+ where to char(hire date, 'MON') like (select to char(hire_date, 'MON') 
+from employees where first_name = 'Charles');

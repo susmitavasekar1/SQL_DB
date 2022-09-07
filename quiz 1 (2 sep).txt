@@ -1,0 +1,15 @@
+1.query to display name end with n
+select * from employees where first_name like'n%';
+select * from employees where last_name like'%n';
+
+2. employees joined in month Dec  
+select * from employees where to_char(hire_date,'MON')='Dec';
+
+3.  emp not have manager 
+select * from employees where manager_id is null;
+
+4.emp record with bonus and bonus will be salary + commission_pct
+select first_name, last_name ,salary, (salary+commission_pct) as bonus from employees; 
+
+5. salary between 5000 to 100000
+select * from employees where salary between 5000 and 100000;

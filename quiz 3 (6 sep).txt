@@ -1,0 +1,16 @@
+1.query to display emp located in Texas:
+ select a first_name as name,b.state_province as location from employees a,
+emp details view b where a.employee_id=b.employee_id and b.state_province like "Texas';
+
+2. no of emp joined month wise:
+ select count(*) as count, to_char(hire_date, 'MON') as months from employees 
+group by to char(hire date, 'MON');
+
+3. highest salary person information:
+ select from employees
+where salary in
+(select max(salary) from employees);
+
+4.highest salary person information department wise:
+ select employee_id,first_name,department_id,salary from employees 
+where (department_id,salary) in (select department_id,max(salary) from employees group by department_id);

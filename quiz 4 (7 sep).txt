@@ -1,0 +1,28 @@
+1. No. of employees joined year wise:
+select department_id , to_char(hire_date,'Y'),count(employee_id)
+from employees group by department_id, to_char(hire_date,'Y') order by department_id;
+
+2. top 2 highest salary :
+select max(salary) as salary from employees where salary <(select max(salary) from employees 
+where salary <(select max(salary) from employees));
+
+
+
+3.1.Cross join :
+select * from Table_A CROSS JOIN Table_B;
+
+
+3.2. Natural join:
+select * from Table_A NATURAL JOIN Table_B;
+
+3.3.Inner join :
+ select id from Table_A INNER JOIN Table_B ON Table_A.id=Table_B.id1;
+
+
+3.4.Right outer join:
+select id from Table_A RIGHT JOIN Table_B ON Table_A.id=Table_B.id1;
+
+
+3.5.Left outer join :
+select id from Table_A LEFT JOIN Table_B ON Table_A.id = Table_B.id1;
+
