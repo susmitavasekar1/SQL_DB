@@ -1,0 +1,37 @@
+1. write plsql block for performing calculations
+
+ declare
+a number(10) := 2;
+b number(10) := 3;
+add number(10);
+sub number(10);
+mul number(10);
+div number(10);
+
+begin 
+add := a+b;
+dbms_output.put_line('addition : '|| add);
+
+sub := a-b;
+dbms_output.put_line('substraction :' || sub);
+
+mul :=a*b;
+dbms_output.put_line('multiplication :' || mul);
+
+div :=a/b;
+dbms_output.put_line('division :' || div);
+end;
+
+2. Write plsql block for calculating student grade 
+
+declare
+score Number :=67;
+grade Char(1);
+begin
+if score>=90 then dbms_output.put_line('A');
+elsif score>=70 then dbms_output.put_line('B');
+elsif score>=50 then dbms_output.put_line('c');
+else
+  dbms_output.put_line('D');
+end if;
+end;
