@@ -1,0 +1,13 @@
+1.Write a query to display top salaried employee location wise-city.
+
+select city,salary,first_name from emp_details_view where (city,salary) in
+(select city,max(salary) from emp_details_view group by city);
+
+
+2.Write a query to display employee based on bonus department wise.
+
+ select department_id,salary+nvl(commission_pct,0) as bonus from employees a where
+ department_id in (select department_id from employees b where a.department_id=b.department_id);
+
+
+
