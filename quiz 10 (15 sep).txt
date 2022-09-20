@@ -1,0 +1,26 @@
+1. Write a procedure to fetch all records of job_id manager with their subordinates.
+
+create or replace procedure managerrec(jid IN varchar)
+is
+e_id emp.employee_id%TYPE;
+en emp.first_name%TYPE;
+mname emp.first_name%TYPE;
+j emp.job_id%TYPE;
+cursor jid_type is
+  select sup.employee_id,sup.first_name,sub.first_name,sup.job_id from emp sub join emp sup on
+  sub.manager_id=sup.employee_id group by sup.employee_id,sup.first_name,sup.job_id,sub.first_name order by sup.first_name;
+  begin
+  open jid_type;
+  LOOP
+  fetch jid_type into e_id,mname,en,j;
+  exit when jid_type%NOTFOUND;
+  if(jid like j) THEN
+  dbms_output.put_line('employee name:'||en ||'| |' ||'manager name:'|| mname);
+  end if;
+  end loop;
+close jid_type;
+end;
+
+begin
+mgremp('SA_MAN');
+end;
