@@ -1,0 +1,37 @@
+1. create table employee_backup (employee_id number, salary number);
+      
+     
+      create or replace trigger backupp before delete on emp
+      for each row
+      begin
+      insert into employee_backup values(:old.employee_id,:old.salary);
+      end;
+    
+      
+      delete from emp where employee_id = 102;
+      
+      select * from employee_backup; // for check
+
+
+
+2.create table employee1(emp_id number,emp_name varchar2(20),age number,salary number);
+
+insert into employee1 values(100,'ABC',30,20000);
+insert into employee1 values(101,'MNO',32,22000);
+insert into employee1 values(102,'PQR',33,26000);
+
+select * from employee1;
+
+create or replace trigger before_age
+before insert on employee1
+for each row
+begin
+if (:new.age < 25) then 
+raise_application_error(-20000,'ERROR!! THE AGE MUST BE ATLEAST 25');
+end if;
+end;
+
+
+--insert into employee1 values(103,'XYZ',26,21000);
+
+select * from employee1;
